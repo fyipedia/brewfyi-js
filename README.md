@@ -19,7 +19,9 @@ TypeScript API client for [BrewFYI](https://brewfyi.com) -- the complete coffee 
   - [Brew Methods](#brew-methods)
   - [Roast Levels](#roast-levels)
 - [API Reference](#api-reference)
+- [REST API (No Auth Required)](#rest-api-no-auth-required)
 - [TypeScript Types](#typescript-types)
+- [Features](#features)
 - [Learn More About Coffee](#learn-more-about-coffee)
 - [Also Available for Python](#also-available-for-python)
 - [Beverage FYI Family](#beverage-fyi-family)
@@ -113,18 +115,65 @@ Post-harvest processing dramatically affects flavor. The same cherry processed d
 | `compare(slugA, slugB)` | Compare varieties or methods |
 | `random()` | Random coffee variety |
 
+## REST API (No Auth Required)
+
+All endpoints are free, require no authentication, and return JSON with CORS enabled.
+
+```bash
+# Search coffees, origins, methods
+curl "https://brewfyi.com/api/v1/search/?q=ethiopian"
+
+# Coffee variety detail
+curl "https://brewfyi.com/api/v1/coffee/ethiopian-yirgacheffe/"
+
+# Origin detail
+curl "https://brewfyi.com/api/v1/origin/ethiopia/"
+
+# Brew method detail
+curl "https://brewfyi.com/api/v1/method/v60/"
+
+# Compare two coffees
+curl "https://brewfyi.com/api/v1/compare/ethiopian-yirgacheffe/colombian-supremo/"
+
+# Random coffee
+curl "https://brewfyi.com/api/v1/random/"
+```
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/v1/coffee/` | List all 72 coffee varieties |
+| GET | `/api/v1/coffee/{slug}/` | Coffee variety detail |
+| GET | `/api/v1/origin/` | List all origin countries |
+| GET | `/api/v1/origin/{slug}/` | Origin detail with regions, altitude |
+| GET | `/api/v1/method/` | List all brew methods |
+| GET | `/api/v1/method/{slug}/` | Brew method detail |
+| GET | `/api/v1/glossary/{slug}/` | Glossary term definition |
+| GET | `/api/v1/search/?q={query}` | Search across all content |
+| GET | `/api/v1/compare/{slug1}/{slug2}/` | Compare two coffees |
+| GET | `/api/v1/random/` | Random coffee variety |
+| GET | `/api/v1/openapi.json` | OpenAPI 3.1.0 specification |
+
+Full spec: [OpenAPI 3.1.0](https://brewfyi.com/api/v1/openapi.json)
+
 ## TypeScript Types
 
 ```typescript
 import type { SearchResult, GlossaryTerm, VarietyDetail, MethodDetail, ProcessingDetail, RoastDetail, CountryDetail, CompareResult, RandomResult } from "brewfyi";
 ```
 
+## Features
+
+- **Comprehensive coffee data**: 72 varieties, origin countries, brew methods, roast levels
+- **SCA cupping scores**: Specialty coffee grading and flavor notes
+- **Method comparison**: Side-by-side analysis of brew methods
+- **Coffee glossary**: Specialty coffee terminology
+- **Zero dependencies**: Uses native `fetch`, no runtime deps
+- **Type-safe**: Full TypeScript with strict mode
+- **Tree-shakeable**: ESM with named exports
+
 ## Learn More About Coffee
 
-- **Reference**: [Varieties](https://brewfyi.com/varieties/) | [Origins](https://brewfyi.com/origins/) | [Brew Methods](https://brewfyi.com/methods/)
-- **Guides**: [Coffee Guides](https://brewfyi.com/guides/) | [Glossary](https://brewfyi.com/glossary/)
-- **API**: [Developer Docs](https://brewfyi.com/developers/) | [OpenAPI Spec](https://brewfyi.com/api/openapi.json)
-- **Python**: [PyPI Package](https://pypi.org/project/brewfyi/)
+Visit [brewfyi.com](https://brewfyi.com/) to explore 72 coffee varieties, 21 brew methods, origin profiles, and processing science with interactive tools.
 
 ## Also Available for Python
 
@@ -132,7 +181,11 @@ import type { SearchResult, GlossaryTerm, VarietyDetail, MethodDetail, Processin
 pip install brewfyi
 ```
 
-See the [Python package on PyPI](https://pypi.org/project/brewfyi/).
+See [brewfyi on PyPI](https://pypi.org/project/brewfyi/) for the Python package with API client, CLI, and MCP server.
+
+<p align="center">
+  <img src="demo.gif" alt="BrewFYI demo -- coffee API client for TypeScript" width="800">
+</p>
 
 ## Beverage FYI Family
 
@@ -142,7 +195,7 @@ Part of the [FYIPedia](https://fyipedia.com) open-source developer tools ecosyst
 |---------|------|-----|-------------|
 | cocktailfyi | [PyPI](https://pypi.org/project/cocktailfyi/) | [npm](https://www.npmjs.com/package/cocktailfyi) | 636 cocktails, ABV, calories -- [cocktailfyi.com](https://cocktailfyi.com/) |
 | vinofyi | [PyPI](https://pypi.org/project/vinofyi/) | [npm](https://www.npmjs.com/package/vinofyi) | Wines, grapes, regions, food pairings -- [vinofyi.com](https://vinofyi.com/) |
-| beerfyi | [PyPI](https://pypi.org/project/beerfyi/) | [npm](https://www.npmjs.com/package/beerfyi) | 112 beer styles, hops, malts -- [beerfyi.com](https://beerfyi.com/) |
+| beerfyi | [PyPI](https://pypi.org/project/beerfyi/) | [npm](https://www.npmjs.com/package/@fyipedia/beerfyi) | 112 beer styles, hops, malts -- [beerfyi.com](https://beerfyi.com/) |
 | **brewfyi** | [PyPI](https://pypi.org/project/brewfyi/) | [npm](https://www.npmjs.com/package/brewfyi) | **72 coffee varieties, brew methods -- [brewfyi.com](https://brewfyi.com/)** |
 | whiskeyfyi | [PyPI](https://pypi.org/project/whiskeyfyi/) | [npm](https://www.npmjs.com/package/whiskeyfyi) | 80 whiskey expressions, distilleries -- [whiskeyfyi.com](https://whiskeyfyi.com/) |
 | teafyi | [PyPI](https://pypi.org/project/teafyi/) | [npm](https://www.npmjs.com/package/teafyi) | 60 tea varieties, teaware -- [teafyi.com](https://teafyi.com/) |
