@@ -1,0 +1,48 @@
+{
+  "name": "brewfyi",
+  "version": "0.1.0",
+  "description": "TypeScript API client for BrewFYI -- coffee varieties, brew methods, roasting, and processing. Zero dependencies.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "coffee",
+    "brew",
+    "espresso",
+    "arabica",
+    "robusta",
+    "roasting",
+    "pour-over",
+    "barista",
+    "coffee-variety",
+    "brew-method",
+    "api-client",
+    "brewfyi"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fyipedia/brewfyi-js"
+  },
+  "homepage": "https://brewfyi.com",
+  "license": "MIT",
+  "author": "FYIPedia",
+  "devDependencies": {
+    "tsup": "^8.0",
+    "typescript": "^5.7",
+    "vitest": "^3.0"
+  }
+}
