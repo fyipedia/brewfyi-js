@@ -124,19 +124,19 @@ All endpoints are free, require no authentication, and return JSON with CORS ena
 curl "https://brewfyi.com/api/v1/search/?q=ethiopian"
 
 # Coffee variety detail
-curl "https://brewfyi.com/api/v1/coffee/ethiopian-yirgacheffe/"
+curl ""
 
 # Origin detail
-curl "https://brewfyi.com/api/v1/origin/ethiopia/"
+curl ""
 
 # Brew method detail
-curl "https://brewfyi.com/api/v1/method/v60/"
+curl ""
 
 # Compare two coffees
-curl "https://brewfyi.com/api/v1/compare/ethiopian-yirgacheffe/colombian-supremo/"
+curl ""
 
 # Random coffee
-curl "https://brewfyi.com/api/v1/random/"
+curl ""
 ```
 
 | Method | Endpoint | Description |
@@ -153,9 +153,7 @@ curl "https://brewfyi.com/api/v1/random/"
 | GET | `/api/v1/random/` | Random coffee variety |
 | GET | `/api/v1/openapi.json` | OpenAPI 3.1.0 specification |
 
-Full spec: [OpenAPI 3.1.0](https://brewfyi.com/api/v1/openapi.json)
-
-## TypeScript Types
+Full spec: ## TypeScript Types
 
 ```typescript
 import type { SearchResult, GlossaryTerm, VarietyDetail, MethodDetail, ProcessingDetail, RoastDetail, CountryDetail, CompareResult, RandomResult } from "brewfyi";
